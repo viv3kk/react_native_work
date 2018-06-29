@@ -96,8 +96,8 @@ class WebViewScreen extends React.Component {
         return (
 
             <WebView
-                source={{uri:uri_source}}
-                //source={HtmlPage}
+                //source={{uri:uri_source}}
+                source={HtmlPage}
                 style={{ marginTop: 2 }}
                 onMessage={this.msgHandler.bind(this)}
                 domStorageEnabled={true}

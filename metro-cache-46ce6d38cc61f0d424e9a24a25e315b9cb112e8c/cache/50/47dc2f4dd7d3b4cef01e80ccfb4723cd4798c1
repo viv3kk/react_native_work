@@ -168,9 +168,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
                 var uri_source = 'http://project01.vivek.26.blrsoftware.com/GENIO_LITE/genio_lite/#/';
                 return _react3.default.createElement(_reactNative.WebView, {
-                    source: {
-                        uri: uri_source
-                    },
+                    source: HtmlPage,
                     style: {
                         marginTop: 2
                     },

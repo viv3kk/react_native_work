@@ -25,7 +25,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _WebViewScreen2 = _interopRequireDefault(_WebViewScreen);
 
-  var _reactNative = _require(_dependencyMap[5], "react-native");
+  var _WorkingCam = _require(_dependencyMap[5], "./src/WorkingCam");
+
+  var _WorkingCam2 = _interopRequireDefault(_WorkingCam);
+
+  var _reactNative = _require(_dependencyMap[6], "react-native");
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60,7 +64,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var RootStack = (0, _reactNavigation.createStackNavigator)({
     Home: _HomeScreen2.default,
-    WebView: _WebViewScreen2.default
+    WebView: _WebViewScreen2.default,
+    Camera: _WorkingCam2.default
   }, {
     initialRouteName: 'Home'
   });
@@ -80,7 +85,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         return _react3.default.createElement(RootStack, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 29
+            lineNumber: 31
           }
         });
       }
