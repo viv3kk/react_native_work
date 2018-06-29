@@ -1,0 +1,29 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    var _reactNative = _require(_dependencyMap[0], "react-native");
+
+    var _App = _require(_dependencyMap[1], "./App");
+
+    var _App2 = _interopRequireDefault(_App);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    if (_reactNative.Platform.OS === 'android') {
+        _reactNative.PermissionsAndroid.request(_reactNative.PermissionsAndroid.PERMISSIONS.CAMERA).then(function (res) {
+            if (res !== 'granted') {
+                Alert.alert('Oops!', 'We need permission to access your camera to scan codes');
+            }
+        });
+    } else {
+        if (Camera) {
+            Camera.checkDeviceAuthorizationStatus().then(function (access) {
+                if (!access) {
+                    Alert.alert('Oops!', 'We need permission to access your camera to scan codes');
+                }
+            });
+        }
+    }
+
+    _reactNative.AppRegistry.registerComponent('AwesomeProject', function () {
+        return _App2.default;
+    });
+});

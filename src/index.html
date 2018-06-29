@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Native Boiler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        // setInterval(function () {
+        //     var message = 'Hello!  Vivek time is: ' + (new Date().getTime());
+        //     window.postMessage(message, 'domain'); //send the message and target URI
+        // }, 20000);
+        document.addEventListener('message',function(data){
+            var msgData = JSON.parse(data.data);
+            window.postMessage(data, 'domain'); //send the message and target URI
+            //alert(msgData.platform);
+        })
+    </script>
+</head>
+<body>
+    <p>Hi from html 5</p>
+    <input type="file" accept="image/*" capture="camera" />
+
+        
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _react2 = _require(_dependencyMap[0], "react");
+
+    var _react3 = _interopRequireDefault(_react2);
+
+    var _index = _require(_dependencyMap[1], "./../node_modules/react-transform-hmr/lib/index.js");
+
+    var _index2 = _interopRequireDefault(_index);
+
+    var _jsxFileName = "/home/justdial/Projects/AwesomeProject/src/WebViewScreen.js";
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _reactNative = _require(_dependencyMap[2], "react-native");
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    var _components = {
+        WebViewScreen: {
+            displayName: "WebViewScreen"
+        }
+    };
+
+    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+        filename: "/home/justdial/Projects/AwesomeProject/src/WebViewScreen.js",
+        components: _components,
+        locals: [module],
+        imports: [_react3.default]
+    });
+
+    function _wrapComponent(id) {
+        return function (Component) {
+            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+        };
+    }
+
+    var HtmlPage = _require(_dependencyMap[3], './index.html');
+
+    var styles = _reactNative.StyleSheet.create({
+        container: {
+            flex: 1,
+            justifyContent: 'center'
+        },
+        horizontal: {
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            padding: 10
+        }
+    });
+
+    var WebViewScreen = _wrapComponent("WebViewScreen")(function (_React$Component) {
+        _inherits(WebViewScreen, _React$Component);
+
+        function WebViewScreen() {
+            _classCallCheck(this, WebViewScreen);
+
+            var _this = _possibleConstructorReturn(this, (WebViewScreen.__proto__ || Object.getPrototypeOf(WebViewScreen)).call(this));
+
+            _this.webView = {
+                canGoBack: false,
+                ref: null,
+                postMessage: function postMessage() {}
+            };
+
+            _this.onAndroidBackPress = function () {
+                if (_this.webView.canGoBack && _this.webView.ref) {
+                    _this.webView.ref.goBack();
+
+                    return true;
+                }
+
+                return false;
+            };
+
+            _this.state = {
+                latitude: null,
+                longitude: null,
+                error: null,
+                platform: _reactNative.Platform.OS
+            };
+            return _this;
+        }
+
+        _createClass(WebViewScreen, [{
+            key: "componentWillMount",
+            value: function componentWillMount() {
+                if (_reactNative.Platform.OS === 'android') {
+                    _reactNative.BackHandler.addEventListener('hardwareBackPress', this.onAndroidBackPress);
+                }
+            }
+        }, {
+            key: "componentDidMount",
+            value: function componentDidMount() {}
+        }, {
+            key: "componentWillUnmount",
+            value: function componentWillUnmount() {
+                navigator.geolocation.clearWatch(this.watchId);
+
+                if (_reactNative.Platform.OS === 'android') {
+                    _reactNative.BackHandler.removeEventListener('hardwareBackPress');
+                }
+            }
+        }, {
+            key: "renderLoading",
+            value: function renderLoading() {
+                return _react3.default.createElement(
+                    _reactNative.View,
+                    {
+                        style: [styles.container, styles.horizontal],
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 81
+                        }
+                    },
+                    _react3.default.createElement(_reactNative.ActivityIndicator, {
+                        size: "large",
+                        color: "#0000ff",
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 82
+                        }
+                    }),
+                    _react3.default.createElement(_reactNative.ActivityIndicator, {
+                        size: "small",
+                        color: "#00ff00",
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 83
+                        }
+                    }),
+                    _react3.default.createElement(_reactNative.ActivityIndicator, {
+                        size: "large",
+                        color: "#0000ff",
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 84
+                        }
+                    }),
+                    _react3.default.createElement(_reactNative.ActivityIndicator, {
+                        size: "small",
+                        color: "#00ff00",
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 85
+                        }
+                    })
+                );
+            }
+        }, {
+            key: "msgHandler",
+            value: function msgHandler(event) {
+                console.log("msgHandler-->" + event.nativeEvent.data);
+            }
+        }, {
+            key: "render",
+            value: function render() {
+                var _this2 = this;
+
+                var uri_source = 'http://project01.vivek.26.blrsoftware.com/GENIO_LITE/genio_lite/#/';
+                return _react3.default.createElement(_reactNative.WebView, {
+                    source: {
+                        uri: uri_source
+                    },
+                    style: {
+                        marginTop: 2
+                    },
+                    onMessage: this.msgHandler.bind(this),
+                    domStorageEnabled: true,
+                    ref: function ref(webView) {
+                        _this2.webView.ref = webView;
+                    },
+                    renderLoading: this.renderLoading.bind(this),
+                    onNavigationStateChange: function onNavigationStateChange(navState) {
+                        _this2.webView.canGoBack = navState.canGoBack;
+                    },
+                    startInLoadingState: true,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 98
+                    }
+                });
+            }
+        }]);
+
+        return WebViewScreen;
+    }(_react3.default.Component));
+
+    exports.default = WebViewScreen;
+});
